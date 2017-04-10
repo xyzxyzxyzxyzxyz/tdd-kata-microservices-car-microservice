@@ -3,7 +3,6 @@ package com.tdd.katas.microservices.carservice.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tdd.katas.microservices.carservice.model.CarData;
 import com.tdd.katas.microservices.carservice.repository.CarRepository;
-import com.tdd.katas.microservices.carservice.service.CarService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,10 +36,6 @@ public class DataFileLoaderTest {
     private CarRepository carRepository;
     @Autowired
     private DataFileLoader dataFileLoader;
-
-    /*
-        5- With property and readable file with valid data, all vehicles added
-     */
 
     @Test
     public void No_property_then_no_action() {
