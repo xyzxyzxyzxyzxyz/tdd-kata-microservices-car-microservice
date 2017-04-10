@@ -1,6 +1,7 @@
 package com.tdd.katas.microservices.carservice.repository;
 
 import com.tdd.katas.microservices.carservice.model.CarData;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +19,19 @@ public class CarRepositoryImplTest
     @Autowired
     private CarRepositoryImpl carRepository;
 
+    @Before
+    public void setUp() {
+        // Clear repository between tests
+        carRepository.deleteAllCarData();
+    }
+
     @Test
     public void The_repository_returns_valid_output_for_valid_input() throws Exception {
         String VIN = "XXX";
 
         CarData expectedCarData = new CarData("W111","Seat Leon","Red");
 
-        carRepository.store(VIN, expectedCarData);
+        carRepository.createCarData(VIN, expectedCarData);
 
         CarData actualCarData =  carRepository.getCarData(VIN);
 
@@ -37,7 +44,7 @@ public class CarRepositoryImplTest
         String NON_EXISTING_VIN = "YYY";
 
         CarData expectedCarData = new CarData("W111","Seat Leon","Red");
-        carRepository.store(EXISTING_VIN, expectedCarData);
+        carRepository.createCarData(EXISTING_VIN, expectedCarData);
 
         CarData actualCarData =  carRepository.getCarData(NON_EXISTING_VIN);
 
