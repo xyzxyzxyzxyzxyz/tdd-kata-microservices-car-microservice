@@ -5,6 +5,8 @@ public class CarData {
     private String model;
     private String color;
 
+    public CarData() {
+    }
 
     public CarData(String plateNumber, String model, String color) {
         this.plateNumber = plateNumber;

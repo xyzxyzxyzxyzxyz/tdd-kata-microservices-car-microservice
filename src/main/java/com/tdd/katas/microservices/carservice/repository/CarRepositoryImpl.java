@@ -20,4 +20,17 @@ public class CarRepositoryImpl implements CarRepository {
         return map.get(vin);
     }
 
+    @Override
+    public void createCarData(String vin, CarData carData) throws IllegalStateException {
+        if (map.containsKey(vin)) {
+            throw new IllegalStateException("Repository already contains a CarData with VIN: ["+vin+"]");
+        }
+        map.put(vin, carData);
+    }
+
+    @Override
+    public void deleteAllCarData() {
+        map.clear();
+    }
+
 }
